@@ -18,6 +18,7 @@
   "homepage": "https://github.com/shank-codes/excel_import_export#readme",
   "dependencies": {
     "dotenv": "^16.0.0",
+    "exceljs": "^4.3.0",
     "express": "^4.17.3",
     "fast-csv": "^4.3.6",
     "formidable": "^2.0.1",

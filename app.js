@@ -33,7 +33,7 @@ app.get('/', (req,res) => {
 app.use('/excel', excelUploadController)
 
 sequelize
-.sync({alter:true})
+.sync()
 .then( req => {
     app.listen(process.env.PORT,()=> {
         console.log(`server listening in http://${process.env.HOSTNAME}:${process.env.PORT}`)
