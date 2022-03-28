@@ -1,6 +1,11 @@
+require("dotenv").config();
+
+const { config } = require('dotenv');
 const express = require('express')
 //const sequelize = require('sequelize')
 const sequelize = require("./DAO/database");
+
+const excelUploadController = require('./controllers/excelUploadController')
 
 
 /*
@@ -25,6 +30,16 @@ app.get('/', (req,res) => {
     res.send('welcome to main route')
 })
 
-app.listen(3000,()=> {
-    console.log('server listening in port 3000')
-})
+app.use('/excel', excelUploadController)
+
+sequelize
+.sync({alter:true})
+.then( req => {
+    app.listen(process.env.PORT,()=> {
+        console.log(`server listening in http://${process.env.HOSTNAME}:${process.env.PORT}`)
+    })
+});
+
+// app.listen(process.env.PORT,()=> {
+//     console.log('server listening in port 3000')
+// })
