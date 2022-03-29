@@ -36,3 +36,15 @@ exports.getPageLabels = async (pageId, langId) => {
       return { Success: false, Error: err };
     }
   };
+
+  exports.getAll = async()=> {
+    try{
+        let pageLabel = await PageLabel.getAll();
+        if(pageLabel.Success)
+            return pageLabel;
+        else
+            return {Success: false, Error: "Error in services"};
+    }catch(err){
+        return {Success: false, Error: err};
+    }
+  }

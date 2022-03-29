@@ -19,3 +19,15 @@ exports.createLabel = async(content)=> {
         return {Success: false, Error: err};
     }
 }
+
+exports.getAll = async()=> {
+    try{
+        let label = await Label.getAll();
+        if(label.Success)
+            return label;
+        else
+            return {Success: false, Error: "Error in services"};
+    }catch(err){
+        return {Success: false, Error: err};
+    }
+  }

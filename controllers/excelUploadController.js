@@ -106,7 +106,7 @@ router.get('/download-template', async(req, res)=> {
           let workbook = new excel.Workbook();
           await workbook.xlsx.readFile('./Template.xlsx');
           res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheet.sheet");
-          res.setHeader("Content-Disposition", "attachment; filename=" + 'download-Template.xlsx');
+          res.setHeader("Content-Disposition", "attachment; filename=" + 'Template-download.xlsx');
           return workbook.xlsx.write(res).then(()=> {
               res.status(200).end();
           });
@@ -117,27 +117,3 @@ router.get('/download-template', async(req, res)=> {
 })
 
 module.exports = router;
-
-
-// {
-// 	"language": [
-// 		{
-// 			"Language_id": 1,
-// 			"Language_name": "US-en",
-// 			"Created_date": "2022-03-28T11:31:20.000Z",
-// 			"Updated_date": "2022-03-28T11:31:20.000Z"
-// 		},
-// 		{
-// 			"Language_id": 2,
-// 			"Language_name": "IN-kn",
-// 			"Created_date": "2022-03-28T11:31:21.000Z",
-// 			"Updated_date": "2022-03-28T11:31:21.000Z"
-// 		},
-// 		{
-// 			"Language_id": 3,
-// 			"Language_name": "IN-hi",
-// 			"Created_date": "2022-03-28T11:31:21.000Z",
-// 			"Updated_date": "2022-03-28T11:31:21.000Z"
-// 		}
-// 	]
-// }

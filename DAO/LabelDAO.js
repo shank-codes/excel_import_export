@@ -32,3 +32,16 @@ exports.getLabel = async(id)=> {
         return {Success: false, Error: err};
     }
 }
+
+
+exports.getAll = async()=> {
+    try{
+        let label = await models.label.findAll();
+        label = JSON.stringify(label);
+        label = JSON.parse(label);
+        return {Success: true, Label: label};
+    }
+    catch(err){
+        return {Success: false, Error: err};
+    }
+  }

@@ -19,3 +19,15 @@ exports.createPage = async(details)=> {
         return {Success: false, Error: err};
     }
 }
+
+exports.getAll = async()=> {
+    try{
+        let page = await Page.getAll();
+        if(page.Success)
+            return page;
+        else
+            return {Success: false, Error: "Error in services"};
+    }catch(err){
+        return {Success: false, Error: err};
+    }
+  }

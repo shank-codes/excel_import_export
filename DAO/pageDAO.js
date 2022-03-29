@@ -31,3 +31,15 @@ exports.getPage = async(pageName)=> {
         return {Success: false, Error: err};
     }
 }
+
+exports.getAll = async()=> {
+    try{
+        let page = await models.page.findAll();
+        page = JSON.stringify(page);
+        page = JSON.parse(page);
+        return {Success: true, Page: page};
+    }
+    catch(err){
+        return {Success: false, Error: err};
+    }
+  }

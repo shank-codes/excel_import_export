@@ -56,3 +56,16 @@ exports.getPageLabels = async (pageId, langId) => {
     return { Success: false, Error: err };
   }
 };
+
+
+exports.getAll = async()=> {
+  try{
+      let pagemap = await models.page_map.findAll();
+      pagemap = JSON.stringify(pagemap);
+      pagemap = JSON.parse(pagemap);
+      return {Success: true, Pagemap: pagemap};
+  }
+  catch(err){
+      return {Success: false, Error: err};
+  }
+}

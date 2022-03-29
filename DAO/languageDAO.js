@@ -19,7 +19,6 @@ exports.getAll = async()=> {
         let language = await models.language.findAll();
         language = JSON.stringify(language);
         language = JSON.parse(language);
-        console.log(language)
         return {Success: true, Language: language};
     }
     catch(err){
