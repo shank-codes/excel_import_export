@@ -80,12 +80,12 @@
                   class="nav-link active"
                   id="userDatabase"
                   aria-current="page"
-                  href="/user/dashboard"
+                  href="/excel/uploadFile"
                   >Upload File</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="preview" href="preview.html">Preview</a>
+                <a class="nav-link" id="preview" href="/excel/preview">Preview</a>
               </li>
               <!-- Navbar dropdown -->
               <li class="nav-item dropdown">
@@ -136,14 +136,14 @@
       </h2>
       <br />
       <div>
-        <form method="get" action="#">
+        <form method="get" action="/excel/download-template">
           <button class="btn"><i class="fa fa-download"></i> Download</button>
         </form>
       </div>
     </header>
     <section>
     <div class="card">
-      <form action="#" method="post">
+      <form action="/excel/uploadFile" method="post">
         <!-- <i class="fa fa-download fileicon" style="width: 100%"></i> -->
         <h2>
           <b> Upload Excel File </b>
@@ -163,7 +163,6 @@
               validated.</b
             >
           </h4>
-          <!-- <p>Interior Designer</p> -->
         </div>
       </div>
       <button class="btn submit-btn"type="submit"><i class="submit-icon fa-solid fa-file-arrow-up"></i>  Submit</button>
