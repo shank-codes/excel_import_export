@@ -36,6 +36,33 @@ body {
 }
 
 /* Add a background color on hover */
+
 .btn-group button:hover {
   background-color: #61cbcb;
 }
+
+.language-table,
+.page-table,
+.label-table,
+.page-map-table {
+  display: none;
+}
+
+.table-div {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+}
+
+/* .container {
+  width: 100%;
+  margin: auto;
+}
+
+table {
+  width: 100%;
+  margin: auto;
+} */

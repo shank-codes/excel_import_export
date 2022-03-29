@@ -80,7 +80,7 @@
                   class="nav-link active"
                   id="userDatabase"
                   aria-current="page"
-                  href="/user/dashboard"
+                  href="upload.html"
                   >Upload File</a
                 >
               </li>
@@ -128,66 +128,70 @@
       </nav>
     </div>
     <div class="btn-group">
-      <button>Language</button>
-      <button>Page</button>
-      <button>Label</button>
-      <button>Page-map</button>
+      <button onclick="showLanguage()" id="language-btn" class="active">
+        Language
+      </button>
+      <button onclick="showPage()" id="page-btn">Page</button>
+      <button onclick="showLabel()" id="label-btn">Label</button>
+      <button onclick="showPageMap()" id="page-map-btn">Page-map</button>
     </div>
-
-    <div class="container">
-      <table class="table language-table">
-        <thead>
-          <tr>
-            <th id="name">Language_id</th>
-            <th>Language_name</th>
-            <th>Created_date</th>
-            <th>Deleted_date</th>
-          </tr>
-        </thead>
-        <tbody id="data"></tbody>
-      </table>
-    </div>
-    <div class="container">
-      <table class="table page-table">
-        <thead>
-          <tr>
-            <th id="name">Page_id</th>
-            <th>Page_name</th>
-            <th>Created_date</th>
-            <th>Deleted_date</th>
-          </tr>
-        </thead>
-        <tbody id="data"></tbody>
-      </table>
-    </div>
-    <div class="container">
-      <table class="table Label-table">
-        <thead>
-          <tr>
-            <th id="name">Label_id</th>
-            <th>Label_name</th>
-            <th>Label_value</th>
-            <th>Language_id</th>
-            <th>Created_date</th>
-            <th>Updated_date</th>
-          </tr>
-        </thead>
-        <tbody id="data"></tbody>
-      </table>
-    </div>
-    <div class="container">
-      <table class="table Page-map-table">
-        <thead>
-          <tr>
-            <th id="name">Page_map_id</th>
-            <th>Page_id</th>
-            <th>Label_id</th>
-            <th>Created_date</th>
-            <th>Updated_date</th>
-          </tr>
-        </thead>
-        <tbody id="data"></tbody>
-      </table>
+    <div class="table-div">
+      <div class="container">
+        <table class="table language-table">
+          <thead>
+            <tr>
+              <th id="name">Language_id</th>
+              <th>Language_name</th>
+              <th>Created_date</th>
+              <th>Deleted_date</th>
+            </tr>
+          </thead>
+          <tbody id="data"></tbody>
+        </table>
+      </div>
+      <div class="container">
+        <table class="table page-table">
+          <thead>
+            <tr>
+              <th id="name">Page_id</th>
+              <th>Page_name</th>
+              <th>Created_date</th>
+              <th>Deleted_date</th>
+            </tr>
+          </thead>
+          <tbody id="data"></tbody>
+        </table>
+      </div>
+      <div class="container">
+        <table class="table label-table">
+          <thead>
+            <tr>
+              <th id="name">Label_id</th>
+              <th>Label_name</th>
+              <th>Label_value</th>
+              <th>Language_id</th>
+              <th>Created_date</th>
+              <th>Updated_date</th>
+            </tr>
+          </thead>
+          <tbody id="data"></tbody>
+        </table>
+      </div>
+      <div class="container">
+        <table class="table page-map-table">
+          <thead>
+            <tr>
+              <th id="name">Page_map_id</th>
+              <th>Page_id</th>
+              <th>Label_id</th>
+              <th>Created_date</th>
+              <th>Updated_date</th>
+            </tr>
+          </thead>
+          <tbody id="data"></tbody>
+        </table>
+      </div>
     </div>
   </body>
+  <script src="../javascript/preview.js"></script>
 </html>

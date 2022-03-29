@@ -1,12 +1,11 @@
 require("dotenv").config();
 
-const { config } = require('dotenv');
-const express = require('express')
+const { config } = require("dotenv");
+const express = require("express");
 //const sequelize = require('sequelize')
 const sequelize = require("./DAO/database");
 
-const excelUploadController = require('./controllers/excelUploadController')
-
+const excelUploadController = require("./controllers/excelUploadController");
 
 /*
 ---> to create tables
@@ -26,18 +25,18 @@ const models = initModels(sequelize)
 
 const app = express();
 
-app.get('/', (req,res) => {
-    res.send('welcome to main route')
-})
+app.get("/", (req, res) => {
+  res.send("welcome to main route");
+});
 
-app.use('/excel', excelUploadController)
-
-sequelize
-.sync()
-.then( req => {
-    app.listen(process.env.PORT,()=> {
-        console.log(`server listening in http://${process.env.HOSTNAME}:${process.env.PORT}`)
-    })
+app.use("/excel", excelUploadController);
+// app.use(express.static(__dirname + "/public"));
+sequelize.sync().then((req) => {
+  app.listen(process.env.PORT, () => {
+    console.log(
+      `server listening in http://${process.env.HOSTNAME}:${process.env.PORT}`
+    );
+  });
 });
 
 // app.listen(process.env.PORT,()=> {
