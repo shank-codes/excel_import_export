@@ -11,7 +11,14 @@ const excelUploadService = require("../services/excelUploadService");
 const languageDAO = require("../DAO/languageDAO");
 
 router.route("/preview").get(async (req, res) => {
+  console.log(req.query.path);
   res.sendFile("preview.html", { root: `${__dirname}/../public/html` });
+  // fs.unlink(req.query.path, (err) => {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  // });
+
 });
 
 router
@@ -41,8 +48,9 @@ router
         next(err);
         return;
       }
-      console.log(req.file);
+      //console.log(req.file);
       // console.log(files.excelFile.filepath);
+      console.log(files)
 
       const workbook = xlsx.readFile(files.excelFile.filepath);
 
@@ -55,12 +63,13 @@ router
       }
 
       await excelUploadService.addExcelToDatabase(worksheets);
-      fs.unlink(files.excelFile.filepath, (err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
-      res.send("done");
+      // fs.unlink(files.excelFile.filepath, (err) => {
+      //   if (err) {
+      //     console.log(err);
+      //   }
+      // });
+      //res.sendFile("preview.html", { root: `${__dirname}/../public/html` });
+      res.redirect(`preview`)
 
       //res.json({ fields, files });
     });

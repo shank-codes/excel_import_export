@@ -143,7 +143,7 @@
     </header>
     <section>
     <div class="card">
-      <form action="/excel/uploadFile" method="post">
+      <form action="/excel/uploadFile" method="post" enctype="multipart/form-data">
         <!-- <i class="fa fa-download fileicon" style="width: 100%"></i> -->
         <h2>
           <b> Upload Excel File </b>
@@ -152,7 +152,7 @@
         <label for="file-upload" class="custom-file-upload"> Select File</label>
         <input
           id="file-upload"
-          name="uploaded"
+          name="excelFile"
           type="file"
           style="display: none"
         />
