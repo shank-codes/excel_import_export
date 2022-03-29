@@ -4,12 +4,12 @@ const router = express.Router();
 const fs = require("fs");
 const xlsx = require("xlsx");
 const formidable = require("formidable");
+const excel = require('exceljs');
 
 const excelUploadService = require('../services/excelUploadService');
 
 const languageDAO = require('../DAO/languageDAO');
 
-const excel = require('exceljs')
 
 router
   .route("/uploadFile")
@@ -62,45 +62,59 @@ router
     });
   });
 
-  router.get('/download', async (req,res) => {
-    try {
+  // router.get('/download', async (req,res) => {
+  //   try {
 
-      const workbook = xlsx.readFile("C:/Users/HP/Desktop/Avysh/excel_import_export/template.xlsx");
-    let worksheets = {};
-    for (const sheetName of workbook.SheetNames) {
-      console.log(`---->${sheetName}`);
-      worksheets[sheetName] = xlsx.utils.sheet_to_json(
-        workbook.Sheets[sheetName]
-      );
-    }
+  //     const workbook = xlsx.readFile("./template.xlsx");
+  //     let worksheets = {};
+  //     for (const sheetName of workbook.SheetNames) {
+  //       console.log(`---->${sheetName}`);
+  //       worksheets[sheetName] = xlsx.utils.sheet_to_json(
+  //         workbook.Sheets[sheetName]
+  //     );
+  //   }
 
-    let languages = await languageDAO.getLanguages();
+  //     let languages = await languageDAO.getLanguages();
 
-      worksheets.Language.push(
-        languages.language[0]
+  //     worksheets.Language.push(
+  //       languages.language[0]
 
-      )
+  //     )
 
-      await xlsx.utils.sheet_add_json(workbook.Sheets['Language'],worksheets.Language)
-      await xlsx.writeFile(workbook, "C:/Users/HP/Desktop/Avysh/excel_import_export/template.xlsx")
+  //     await xlsx.utils.sheet_add_json(workbook.Sheets['Language'],worksheets.Language)
+  //     await xlsx.writeFile(workbook, "./template.xlsx")
 
-      const wb = new excel.Workbook();
+  //     const wb = new excel.Workbook();
 
-      await wb.xlsx.readFile("C:/Users/HP/Desktop/Avysh/excel_import_export/template.xlsx")
+  //     await wb.xlsx.readFile("./template.xlsx")
 
-      res.setHeader('Content-Type',"application/vnd.openxmlformats-officedocument.spreadsheet.sheet");
-      res.setHeader('Content-Disposition', 'attachment; filename='+'Template.xlsx')
+  //     res.setHeader('Content-Type',"application/vnd.openxmlformats-officedocument.spreadsheet.sheet");
+  //     res.setHeader('Content-Disposition', 'attachment; filename='+'Template.xlsx')
 
-      return wb.xlsx.write(res);
+  //     return wb.xlsx.write(res);
       
+  //   }
+  //   catch(err) {
+  //     console.log(err);
+  //     res.send(err)
+  //   }
+  // })
 
-      //res.send( worksheets);
-
-    }
-    catch(err) {
-      res.send(err)
-    }
-  })
+router.get('/download-template', async(req, res)=> {
+      try{
+          let result = await excelUploadService.returnTemplate();
+          let workbook = new excel.Workbook();
+          await workbook.xlsx.readFile('./Template.xlsx');
+          res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheet.sheet");
+          res.setHeader("Content-Disposition", "attachment; filename=" + 'download-Template.xlsx');
+          return workbook.xlsx.write(res).then(()=> {
+              res.status(200).end();
+          });
+      }catch(err){
+          console.log(err);
+          res.status(500).json("Error");
+      }
+})
 
 module.exports = router;
 

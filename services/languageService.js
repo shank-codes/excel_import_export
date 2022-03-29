@@ -17,3 +17,15 @@ exports.saveLangauage = async (languageName) => {
     return { Success: false, Error: err };
   }
 };
+
+exports.getAll = async()=> {
+  try{
+      let languages = await languageDAO.getAll();
+      if(languages.Success)
+          return languages;
+      else
+          return {Success: false, Error: "Error in services"};
+  }catch(err){
+      return {Success: false, Error: err};
+  }
+}

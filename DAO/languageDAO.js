@@ -14,12 +14,15 @@ exports.saveLangauage = async(languageDetails)=> {
     }
 }
 
-exports.getLanguages = async () => {
-    console.log('----------------------------------->reached here')
-    let language = await models.language.findAll();
-    console.log(language)
-    language = JSON.stringify(language);
-    language = JSON.parse(language);
-    console.log(language)
-    return {language}
+exports.getAll = async()=> {
+    try{
+        let language = await models.language.findAll();
+        language = JSON.stringify(language);
+        language = JSON.parse(language);
+        console.log(language)
+        return {Success: true, Language: language};
+    }
+    catch(err){
+        return {Success: false, Error: err};
+    }
 }
