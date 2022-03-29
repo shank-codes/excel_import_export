@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/excel", excelUploadController);
-// app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public"));
 sequelize.sync().then((req) => {
   app.listen(process.env.PORT, () => {
     console.log(
