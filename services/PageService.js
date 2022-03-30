@@ -51,6 +51,7 @@ exports.update = async (pageId, details,transaction) => {
   try {
     let toUpdate = {
       Page_name: details.Page_name,
+      Status: details.Status,
       Updated_date: new Date(),
     };
     let page = await Page.update(pageId, toUpdate,transaction);

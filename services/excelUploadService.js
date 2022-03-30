@@ -182,6 +182,7 @@ exports.returnTemplate = async () => {
       { header: "Language_id", key: "Language_id", width: 28 },
       { header: "Created_date", key: "Created_date", width: 28 },
       { header: "Updated_date", key: "Updated_date", width: 28 },
+      { header: "Status", key: "Status", width: 20}
     ];
 
     pageSheet.columns = [
@@ -189,6 +190,7 @@ exports.returnTemplate = async () => {
       { header: "Page_name", key: "Page_name", width: 20 },
       { header: "Created_date", key: "Created_date", width: 28 },
       { header: "Updated_date", key: "Updated_date", width: 28 },
+      { header: "Status", key: "Status", width: 20}
     ];
 
     pagemapSheet.columns = [
@@ -197,6 +199,7 @@ exports.returnTemplate = async () => {
       { header: "Label_id", key: "Label_id", width: 18 },
       { header: "Created_date", key: "Created_date", width: 28 },
       { header: "Updated_date", key: "Updated_date", width: 28 },
+      { header: "Status", key: "Status", width: 20}
     ];
 
     //GET EXISTING DATA FROM DATABASE
@@ -218,6 +221,7 @@ exports.returnTemplate = async () => {
         object.Language_name,
         object.Created_date,
         object.Updated_date,
+        object.Status
       ];
     });
 
@@ -227,6 +231,7 @@ exports.returnTemplate = async () => {
         object.Page_name,
         object.Created_date,
         object.Updated_date,
+        object.Status
       ];
     });
 
@@ -238,6 +243,7 @@ exports.returnTemplate = async () => {
         object.Language_id,
         object.Created_date,
         object.Updated_date,
+        object.Status
       ];
     });
 
@@ -248,6 +254,7 @@ exports.returnTemplate = async () => {
         object.Label_id,
         object.Created_date,
         object.Updated_date,
+        object.Status
       ];
     });
 

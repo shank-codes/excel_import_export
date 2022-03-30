@@ -45,6 +45,7 @@ exports.update = async (labelId, details,transaction) => {
       Label_name: details.Label_name,
       Label_value: details.Label_value,
       Language_id: details.Language_id,
+      Status: details.Status,
       Updated_date: new Date(),
     };
     let label = await Label.update(labelId, toUpdate,transaction);

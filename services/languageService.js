@@ -63,6 +63,7 @@ exports.update = async (languageId, details,transaction) => {
   try {
     let toUpdate = {
       Language_name: details.Language_name,
+      Status: details.Status,
       Updated_date: new Date(),
     };
     let language = await languageDAO.update(languageId, toUpdate,transaction);
