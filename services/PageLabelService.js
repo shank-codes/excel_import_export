@@ -74,6 +74,7 @@ exports.update = async (pagelabelId, details,transaction) => {
     let toUpdate = {
       Page_id: details.Page_id,
       Label_id: details.Label_id,
+      Status: details.Status,
       Updated_date: new Date(),
     };
     let pagemap = await PageLabel.update(pagelabelId, toUpdate,transaction);
