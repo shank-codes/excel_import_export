@@ -66,3 +66,14 @@ table {
   width: 100%;
   margin: auto;
 } */
+
+.message {
+  font-size: 70px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
