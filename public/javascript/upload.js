@@ -1,12 +1,12 @@
-$("#excel_file").change(function () {
+$("#excelFile").change(function () {
   var i = $(this).prev("label").clone();
-  var file = $("#excel_file")[0].files[0].name;
+  var file = $("#excelFile")[0].files[0].name;
   $(this).prev("label").text(file);
 });
 
-const excel_file = document.getElementById("excel_file");
+const excelFile = document.getElementById("excelFile");
 
-excel_file.addEventListener("change", (event) => {
+excelFile.addEventListener("change", (event) => {
   if (
     ![
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -16,7 +16,7 @@ excel_file.addEventListener("change", (event) => {
     document.getElementById("excel_data").innerHTML =
       '<div class="alert alert-danger">Only .xlsx or .xls file format are allowed</div>';
 
-    excel_file.value = "";
+    excelFile.value = "";
 
     return false;
   }
@@ -136,6 +136,6 @@ excel_file.addEventListener("change", (event) => {
       document.getElementById("excel_data3").innerHTML = table_output;
     }
 
-    excel_file.value = "";
+    // excelFile.value = "";
   };
 });
