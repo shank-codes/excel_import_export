@@ -84,11 +84,11 @@
                   >Upload File</a
                 >
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" id="preview" href="/excel/preview"
                   >Preview</a
                 >
-              </li>
+              </li> -->
               <!-- Navbar dropdown -->
               <li class="nav-item dropdown">
                 <a
@@ -104,20 +104,14 @@
                 <!-- Dropdown menu -->
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="/user/signup?lang_id=1"
-                      >English</a
-                    >
+                    <a class="dropdown-item" href="#">English</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="/user/signup?lang_id=2"
-                      >ಕನ್ನಡ</a
-                    >
+                    <a class="dropdown-item" href="#">ಕನ್ನಡ</a>
                   </li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
-                    <a class="dropdown-item" href="/user/signup?lang_id=3"
-                      >हिन्दी</a
-                    >
+                    <a class="dropdown-item" href="#">हिन्दी</a>
                   </li>
                 </ul>
               </li>
@@ -129,7 +123,10 @@
         <!-- Container wrapper -->
       </nav>
     </div>
-    <div class="btn-group">
+    <div class="container">
+      <h1 class="message">File has been uploaded successfully !</h1>
+    </div>
+    <!-- <div class="btn-group">
       <button onclick="showLanguage()" id="language-btn" class="active">
         Language
       </button>
@@ -193,7 +190,7 @@
           <tbody id="data"></tbody>
         </table>
       </div>
-    </div>
+    </div> -->
   </body>
   <script src="../javascript/preview.js"></script>
 </html>
