@@ -82,15 +82,15 @@
               <li class="nav-item">
                 <a
                   class="nav-link active"
-                  id="userDatabase"
+                  id="uploadFile"
                   aria-current="page"
                   href="/excel/uploadFile"
                   >Upload File</a
                 >
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" id="preview" href="/excel/preview">Preview</a>
-              </li>
+              </li> -->
               <!-- Navbar dropdown -->
               <li class="nav-item dropdown">
                 <a
@@ -106,18 +106,18 @@
                 <!-- Dropdown menu -->
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="/user/signup?lang_id=1"
+                    <a class="dropdown-item" href="#"
                       >English</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="/user/signup?lang_id=2"
+                    <a class="dropdown-item" href="#"
                       >ಕನ್ನಡ</a
                     >
                   </li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
-                    <a class="dropdown-item" href="/user/signup?lang_id=3"
+                    <a class="dropdown-item" href="#"
                       >हिन्दी</a
                     >
                   </li>
@@ -131,8 +131,9 @@
         <!-- Container wrapper -->
       </nav>
     </div>
+    
     <header>
-      <h2>
+      <h2 id="instruction">
         <b>
           Please download the template and make changes to the same file before
           uploading it.
@@ -141,7 +142,7 @@
       <br />
       <div>
         <form method="get" action="/excel/download-template">
-          <button class="btn"><i class="fa fa-download"></i> Download</button>
+          <button class="btn" id="download"><i class="fa fa-download"></i> Download</button>
         </form>
       </div>
     </header>
@@ -149,7 +150,7 @@
     <div class="card">
       <form action="/excel/uploadFile" method="post" enctype="multipart/form-data">
         <!-- <i class="fa fa-download fileicon" style="width: 100%"></i> -->
-        <h2>
+        <h2 id="uploadExcelFile">
           <b> Upload Excel File </b>
         </h2>
         <i class="fa-solid fa-file-lines fileicon" style="width: 100%"></i>
@@ -161,7 +162,7 @@
           style="display: none"
         />
         <div class="container">
-          <h4>
+          <h4 id="validation">
             <b
               >Make sure to upload the same template file which is edited and
               validated.</b
@@ -169,14 +170,35 @@
           </h4>
         </div>
       </div>
-      <div id="excel_data" class="mt-5"></div>
-      <div id="excel_data1" class="mt-5"></div>
-      <div id="excel_data2" class="mt-5"></div>
-      <div id="excel_data3" class="mt-5"></div>
+      <div class="container">
+        <div id="excel_data" class="mt-5">
+          <!-- <h2 class="heading"style="display: none;">Language Table</h2> -->
+        </div>
+        <div id="excel_data1" class="mt-5">
+          <!-- <h2 class="heading"style="display: none;">Page Table</h2> -->
 
-      <button class="btn submit-btn"type="submit"><i class="submit-icon fa-solid fa-file-arrow-up"></i>  Submit</button>
+        </div>
+        <div id="excel_data2" class="mt-5">
+          <!-- <h2 class="heading"style="display: none;">Label Table</h2> -->
+
+        </div>
+        <div id="excel_data3" class="mt-5">
+          <!-- <h2 class="heading"style="display: none;">Page-map Table</h2> -->
+
+        </div>
+      </div>
+      
+      <button class="btn submit-btn"type="submit" id="submit"><i class="submit-icon fa-solid fa-file-arrow-up"></i>  Submit</button>
     </form>
   </section>
+  <div class="modal-wrapper" id="modal">
+    <div class="modal">
+      <div class="modal-body">
+        <h4>Modal Body</h4>
+        <p>pls wait, thanks.</p>
+      </div>
+    </div>
+  </div>
   </body>
     <script src="../javascript/upload.js"></script>
 </html>
