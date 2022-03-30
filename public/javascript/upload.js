@@ -5,6 +5,7 @@ $("#excelFile").change(function () {
 });
 
 const excelFile = document.getElementById("excelFile");
+let heading = document.querySelector(".heading");
 
 excelFile.addEventListener("change", (event) => {
   if (
@@ -52,7 +53,8 @@ excelFile.addEventListener("change", (event) => {
     );
 
     if (language_data.length > 0) {
-      var table_output = '<table class="table table-striped table-bordered">';
+      var table_output =
+        ' <h2 class="heading">Language Table</h2><table class="table table-striped table-bordered">';
 
       for (var row = 0; row < language_data.length; row++) {
         table_output += "<tr>";
@@ -73,7 +75,8 @@ excelFile.addEventListener("change", (event) => {
       document.getElementById("excel_data").innerHTML = table_output;
     }
     if (page_data.length > 0) {
-      var table_output = '<table class="table table-striped table-bordered">';
+      var table_output =
+        ' <h2 class="heading">Page Table</h2><table class="table table-striped table-bordered">';
 
       for (var row = 0; row < page_data.length; row++) {
         table_output += "<tr>";
@@ -94,7 +97,8 @@ excelFile.addEventListener("change", (event) => {
       document.getElementById("excel_data1").innerHTML = table_output;
     }
     if (label_data.length > 0) {
-      var table_output = '<table class="table table-striped table-bordered">';
+      var table_output =
+        ' <h2 class="heading">Label Table</h2><table class="table table-striped table-bordered">';
 
       for (var row = 0; row < label_data.length; row++) {
         table_output += "<tr>";
@@ -115,7 +119,8 @@ excelFile.addEventListener("change", (event) => {
       document.getElementById("excel_data2").innerHTML = table_output;
     }
     if (page_map_data.length > 0) {
-      var table_output = '<table class="table table-striped table-bordered">';
+      var table_output =
+        ' <h2 class="heading">Page-map Table</h2><table class="table table-striped table-bordered">';
 
       for (var row = 0; row < page_map_data.length; row++) {
         table_output += "<tr>";
@@ -138,4 +143,25 @@ excelFile.addEventListener("change", (event) => {
 
     // excelFile.value = "";
   };
+});
+
+//-------------------LOADER---------------------
+const openBtn = document.getElementById("submit");
+const modal = document.getElementById("modal");
+
+openBtn.addEventListener("click", () => {
+  modal.classList.add("open");
+});
+
+//-------------------TRANSLATIONS---------------
+fetch("URL").then((res) => {
+  res.json().then((data) => {
+    document.querySelector("#uploadFile").innerHTML = data.context.uploadFile;
+    document.querySelector("#instruction").innerHTML = data.context.instruction;
+    document.querySelector("#download").innerHTML = data.context.download;
+    document.querySelector("#uploadExcelFile").innerHTML =
+      data.context.uploadExcelFile;
+    document.querySelector("#validation").innerHTML = data.context.validation;
+    document.querySelector("#submit").innerHTML = data.context.submit;
+  });
 });

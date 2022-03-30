@@ -62,4 +62,19 @@ exports.getAll = async()=> {
     catch(err){
         return {Success: false, Error: err};
     }
-  }
+}
+
+exports.update = async(labelId, details)=> {
+    try{
+        let label = await models.label.update(details, {
+            where: {
+                Label_id: labelId
+            }
+        });
+        return {Success: true, Label: label};
+    }catch(err){
+        console.log("DAO label error: ", err);
+        return {Success: false, Error: err};
+    }
+}
+

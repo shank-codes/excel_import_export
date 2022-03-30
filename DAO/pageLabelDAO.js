@@ -102,3 +102,16 @@ exports.getPageLabelById = async (id) => {
     return { Success: false, Error: err };
   }
 };
+exports.update = async(pagemapId, details)=> {
+  try{
+      let pagemap = await models.page_map.update(details, {
+          where: {
+              Page_map_id: pagemapId
+          }
+      });
+      return {Success: true, Pagemap: pagemap};
+  }catch(err){
+      console.log("DAO pagemap error: ", err);
+      return {Success: false, Error: err};
+  }
+}

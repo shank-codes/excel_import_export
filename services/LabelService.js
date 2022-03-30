@@ -42,3 +42,18 @@ exports.getAll = async()=> {
         return {Success: false, Error: err};
     }
   }
+
+exports.update = async(labelId, details)=> {
+    try{
+        let toUpdate = {
+            Label_name: details.Label_name,
+            Label_value: details.Label_value,
+            Language_id: details.Language_id,
+            Updated_date: new Date()
+        };
+        let label = await Label.update(labelId, toUpdate);
+        return label;
+    }catch(err){
+        return {Success: false, Error: err};
+    }
+}

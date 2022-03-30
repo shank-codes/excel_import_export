@@ -49,6 +49,18 @@ exports.getLanguageById = async(id)=> {
 
     }catch(err){
         console.log(err);
+    }
+}
+exports.update = async(languageId, details)=> {
+    try{
+        let language = await models.language.update(details, {
+            where: {
+                Language_id: languageId
+            }
+        });
+        return {Success: true, Language: language};
+    }catch(err){
+        console.log("DAO langiage error: ", err);
         return {Success: false, Error: err};
     }
 }

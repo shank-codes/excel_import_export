@@ -56,6 +56,17 @@ exports.getAll = async()=> {
         else return {Success: false}
     }catch(err){
         console.log(err);
+    }}
+exports.update = async(pageId, details)=> {
+    try{
+        let page = await models.page.update(details, {
+            where: {
+                Page_id: pageId
+            }
+        });
+        return {Success: true, Page: page};
+    }catch(err){
+        console.log("DAO page error: ", err);
         return {Success: false, Error: err};
     }
 }
