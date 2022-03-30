@@ -49,3 +49,16 @@ exports.getAll = async()=> {
       return {Success: false, Error: err};
   }
 }
+
+exports.update = async(languageId, details)=> {
+  try{
+      let toUpdate = {
+        Language_name: details.Language_name,
+        Updated_date: new Date()
+      };
+      let language = await languageDAO.update(languageId, toUpdate);
+      return language;
+  }catch(err){
+      return {Success: false, Error: err};
+  }
+}

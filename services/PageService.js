@@ -40,3 +40,16 @@ exports.getAll = async()=> {
         return {Success: false, Error: err};
     }
   }
+
+  exports.update = async(pageId, details)=> {
+    try{
+        let toUpdate = {
+          Page_name: details.Page_name,
+          Updated_date: new Date()
+        };
+        let page = await Page.update(pageId, toUpdate);
+        return page;
+    }catch(err){
+        return {Success: false, Error: err};
+    }
+  }

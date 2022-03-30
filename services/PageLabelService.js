@@ -58,3 +58,17 @@ exports.getPageLabels = async (pageId, langId) => {
         return {Success: false, Error: err};
     }
   }
+
+  exports.update = async(pagelabelId, details)=> {
+    try{
+        let toUpdate = {
+          Page_id: details.Page_id,
+          Label_id: details.Label_id,
+          Updated_date: new Date()
+        };
+        let pagemap = await PageLabel.update(pagelabelId, toUpdate);
+        return pagemap;
+    }catch(err){
+        return {Success: false, Error: err};
+    }
+  }
