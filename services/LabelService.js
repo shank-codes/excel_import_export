@@ -11,9 +11,20 @@ exports.getLabel = async(id)=> {
     }
 }
 
-exports.createLabel = async(content)=> {
+// exports.createLabel = async(content)=> {
+//     try{
+//         let label = await Label.createLabel(content);
+//         return label;
+//     }catch(err){
+//         return {Success: false, Error: err};
+//     }
+// }
+
+
+//updated with transaction
+exports.createLabel = async(content,transaction)=> {
     try{
-        let label = await Label.createLabel(content);
+        let label = await Label.createLabel(content,transaction);
         return label;
     }catch(err){
         return {Success: false, Error: err};

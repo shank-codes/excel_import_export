@@ -2,7 +2,24 @@ const sequelize = require('./database');
 const initModels = require('../models/init-models');
 const models = initModels(sequelize);
 
-exports.createLabel = async(content)=> {
+// exports.createLabel = async(content)=> {
+//     try{
+//         let date = new Date();
+//         let label = await models.label.create({
+//            Label_name: content.label_name,
+//            Label_value: content.label_value,
+//            Language_id: content.language_id,
+//            Created_date: date,
+//            Updated_date: date
+//         });
+//         return {Success: true, Content: label};
+//     }catch(err){
+//         return {Success: false, Error: err};
+//     }
+// }
+
+//updated code with transaction
+exports.createLabel = async(content,transaction)=> {
     try{
         let date = new Date();
         let label = await models.label.create({
@@ -11,7 +28,7 @@ exports.createLabel = async(content)=> {
            Language_id: content.language_id,
            Created_date: date,
            Updated_date: date
-        });
+        },{transaction: transaction});
         return {Success: true, Content: label};
     }catch(err){
         return {Success: false, Error: err};

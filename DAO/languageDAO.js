@@ -4,9 +4,19 @@ const sequelize = require('./database');
 const initModels = require('../models/init-models');
 const models = initModels(sequelize);
 
-exports.saveLangauage = async(languageDetails)=> {
+// exports.saveLangauage = async(languageDetails)=> {
+//     try{
+//         let language = await models.language.create(languageDetails);
+//         return {Success: true, Language: language};
+//     }
+//     catch(err){
+//         return {Success: false, Error: err};
+//     }
+// }
+
+exports.saveLangauage = async(languageDetails,transaction)=> {
     try{
-        let language = await models.language.create(languageDetails);
+        let language = await models.language.create(languageDetails,{transaction: transaction});
         return {Success: true, Language: language};
     }
     catch(err){

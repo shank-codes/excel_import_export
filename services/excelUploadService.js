@@ -5,6 +5,8 @@ const pageService = require("./PageService");
 const labelService = require("./LabelService");
 const pageLabelService = require("./PageLabelService");
 
+const sequelize = require('../DAO/database')
+
 exports.deleteRows = async(sheet)=> {
   try{
       sheet.eachRow((row, rowId)=> {
@@ -33,27 +35,65 @@ exports.addExcelToDatabase = async (worksheets) => {
       throw new Error("all tables must be there in the excel file");
     }
 
-    for (const languageObj of worksheets.Language) {
-      await languageService.saveLangauage(languageObj.Language_name);
-    }
+    return sequelize.transaction(async (t)=> {
+      for (const languageObj of worksheets.Language) {
+        let result1 = await languageService.saveLangauage(languageObj.Language_name,t);
+        if(!result1.Success) throw new Error();
+      }
 
-    for (const pageObj of worksheets.Page) {
-      await pageService.createPage({name: pageObj.Page_name});
-    }
+      for (const pageObj of worksheets.Page) {
+        let result2 = await pageService.createPage({name: pageObj.Page_name},t);
+        if(!result2.Success) throw new Error();
+      }
+  
+      for (const labelObj of worksheets.Label) {
+        let result3 = await labelService.createLabel({
+          label_name: labelObj.Label_name,
+          label_value: labelObj.Label_value,
+          language_id: labelObj.Language_id,
+        },t)
+        if(!result3.Success) throw new Error(`-------------> while adding this${labelObj}`);
+      }
+      for (const pageLabelObj of worksheets.Page_map) {
+        let result4 = await pageLabelService.createPageLabel({
+            page:pageLabelObj.Page_id,
+            label:pageLabelObj.Label_id
+        },t)
+        if(!result4.Success) throw new Error();
+      }
+    
+    }).then(function (result) {
+      // Transaction has been committed
+      // result is whatever the result of the promise chain returned to the transaction callback
+      console.log(`-----------------------------> committed---->${result}`)
+    }).catch(function (err) {
+      // Transaction has been rolled back
+      // err is whatever rejected the promise chain returned to the transaction callback
+      console.log('------------------------------> Rolled back')
+      console.log(err)
+    });
 
-    for (const labelObj of worksheets.Label) {
-      await labelService.createLabel({
-        label_name: labelObj.Label_name,
-        label_value: labelObj.Label_value,
-        language_id: labelObj.Language_id,
-      })
-    }
-    for (const pageLabelObj of worksheets.Page_map) {
-      await pageLabelService.createPageLabel({
-          page:pageLabelObj.Page_id,
-          label:pageLabelObj.Label_id
-      })
-    }
+    // for (const languageObj of worksheets.Language) {
+    //   await languageService.saveLangauage(languageObj.Language_name);
+    // }
+
+    // for (const pageObj of worksheets.Page) {
+    //   await pageService.createPage({name: pageObj.Page_name});
+    // }
+
+    // for (const labelObj of worksheets.Label) {
+    //   await labelService.createLabel({
+    //     label_name: labelObj.Label_name,
+    //     label_value: labelObj.Label_value,
+    //     language_id: labelObj.Language_id,
+    //   })
+    // }
+    // for (const pageLabelObj of worksheets.Page_map) {
+    //   await pageLabelService.createPageLabel({
+    //       page:pageLabelObj.Page_id,
+    //       label:pageLabelObj.Label_id
+    //   })
+    // }
   } catch (err) {
     console.log(err);
   }

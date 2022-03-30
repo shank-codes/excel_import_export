@@ -4,14 +4,14 @@ const sequelize = require('./database');
 const initModels = require('../models/init-models');
 const models = initModels(sequelize);
 
-exports.createPage = async(details)=> {
+exports.createPage = async(details,transaction)=> {
     try{
         let date = new Date();
         let page = await models.page.create({
             Page_name: details.name,
             Created_date: date,
             Updated_date: date
-        });
+        },{transaction: transaction});
         return {Success: true, Page: page};
     }catch(err){
         console.log(err);
