@@ -85,3 +85,20 @@ exports.getAll = async()=> {
       return {Success: false, Error: err};
   }
 }
+
+
+exports.getPageLabelById = async (id) => {
+  try {
+    let pageLabel = await models.page_map.findAll({
+      where: {
+        Page_map_id: id,
+      }
+    });
+    if(pageLabel.length >0)
+    return { Success: true, Pagelabel: pageLabel };
+    else return{ Success: false}
+  } catch (err) {
+    console.log(err);
+    return { Success: false, Error: err };
+  }
+};

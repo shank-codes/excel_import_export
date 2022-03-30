@@ -49,3 +49,13 @@ exports.getAll = async()=> {
       return {Success: false, Error: err};
   }
 }
+
+exports.getLanguageById = async(id)=> {
+  try{
+      let language = await languageDAO.getLanguageById(id)
+      return language
+  }catch(err){
+      console.log(err);
+      return {Success: false, Error: err};
+  }
+}

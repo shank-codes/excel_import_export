@@ -58,3 +58,13 @@ exports.getPageLabels = async (pageId, langId) => {
         return {Success: false, Error: err};
     }
   }
+
+  exports.getPageLabelById = async (id) => {
+    try {
+      let pageLabel = await PageLabel.getPageLabelById(id)
+      return pageLabel
+    } catch (err) {
+      console.log(err);
+      return { Success: false, Error: err };
+    }
+  };

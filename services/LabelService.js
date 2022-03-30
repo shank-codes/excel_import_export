@@ -1,9 +1,9 @@
 const Label = require('../DAO/LabelDAO');
 
 
-exports.getLabel = async(id)=> {
+exports.getLabelById = async(id)=> {
     try{
-        let label = await Label.getLabel(id);
+        let label = await Label.getLabelById(id);
         return label;
     }catch(err){
         console.log(err);

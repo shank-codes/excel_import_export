@@ -35,15 +35,16 @@ exports.createLabel = async(content,transaction)=> {
     }
 }
 
-exports.getLabel = async(id)=> {
+exports.getLabelById = async(id)=> {
     try{
         let label = await models.label.findAll({
             where: {
                 Label_id: id,
             }
         });
-        // console.log(label[languageCode]);
-        return {Success: true, Label: label}
+        if(label.length > 0)
+        return {Success: true, Label: label[0]}
+        else return {Success: false}
     }catch(err){
         console.log(err);
         return {Success: false, Error: err};

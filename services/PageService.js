@@ -40,3 +40,13 @@ exports.getAll = async()=> {
         return {Success: false, Error: err};
     }
   }
+
+  exports.getPageById = async(id)=> {
+    try{
+        let page = await Page.getPageById(id)
+        return page
+    }catch(err){
+        console.log(err);
+        return {Success: false, Error: err};
+    }
+}

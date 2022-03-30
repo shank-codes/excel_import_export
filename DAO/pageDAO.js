@@ -43,3 +43,19 @@ exports.getAll = async()=> {
         return {Success: false, Error: err};
     }
   }
+
+  exports.getPageById = async(id)=> {
+    try{
+        let pages = await models.page.findAll({
+            where: {
+                Page_id: id,
+            }
+        });
+        if(pages.length > 0)
+        return {Success: true, Page: pages[0]}
+        else return {Success: false}
+    }catch(err){
+        console.log(err);
+        return {Success: false, Error: err};
+    }
+}

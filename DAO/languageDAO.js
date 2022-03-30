@@ -35,3 +35,20 @@ exports.getAll = async()=> {
         return {Success: false, Error: err};
     }
 }
+
+exports.getLanguageById = async(id)=> {
+    try{
+        let language = await models.language.findAll({
+            where: {
+                Language_id: id,
+            }
+        });
+        if(language.length > 0)
+        return {Success: true, Language: language[0]}
+        else return {Success: false}
+
+    }catch(err){
+        console.log(err);
+        return {Success: false, Error: err};
+    }
+}
