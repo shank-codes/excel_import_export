@@ -162,6 +162,6 @@ fetch("URL").then((res) => {
     document.querySelector("#uploadExcelFile").innerHTML =
       data.context.uploadExcelFile;
     document.querySelector("#validation").innerHTML = data.context.validation;
-    document.querySelector("#submit").innerHTML = data.context.submit;
+    document.querySelector("#submit").innerHTML = data.context.signIn;
   });
 });
