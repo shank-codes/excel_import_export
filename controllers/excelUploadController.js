@@ -11,7 +11,6 @@ const excelUploadService = require("../services/excelUploadService");
 const languageDAO = require("../DAO/languageDAO");
 
 router.route("/preview").get(async (req, res) => {
-  console.log(req.query.path);
   res.sendFile("preview.html", { root: `${__dirname}/../public/html` });
   // fs.unlink(req.query.path, (err) => {
   //   if (err) {
