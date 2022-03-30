@@ -63,11 +63,11 @@ router
       }
 
       await excelUploadService.addExcelToDatabase(worksheets);
-      // fs.unlink(files.excelFile.filepath, (err) => {
-      //   if (err) {
-      //     console.log(err);
-      //   }
-      // });
+      fs.unlink(files.excelFile.filepath, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
       //res.sendFile("preview.html", { root: `${__dirname}/../public/html` });
       res.redirect(`preview`)
 
