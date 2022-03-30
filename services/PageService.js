@@ -10,16 +10,25 @@ exports.getPage = async(pageName)=> {
     }
 }
 
-exports.createPage = async(details)=> {
+// exports.createPage = async(details)=> {
+//     try{
+//         let page = await Page.createPage(details);
+//         return page;
+//     }catch(err){
+//         console.log(err);
+//         return {Success: false, Error: err};
+//     }
+// }
+
+exports.createPage = async(details,transaction)=> {
     try{
-        let page = await Page.createPage(details);
+        let page = await Page.createPage(details,transaction);
         return page;
     }catch(err){
         console.log(err);
         return {Success: false, Error: err};
     }
 }
-
 exports.getAll = async()=> {
     try{
         let page = await Page.getAll();

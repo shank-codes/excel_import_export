@@ -2,7 +2,23 @@ const sequelize = require("./database");
 const initModels = require("../models/init-models");
 const models = initModels(sequelize);
 
-exports.createPageLabel = async (details) => {
+// exports.createPageLabel = async (details) => {
+//   try {
+//     let date = new Date();
+//     let pageLabel = await models.page_map.create({
+//       Page_id: details.page,
+//       Label_id: details.label,
+//       Created_date: date,
+//       Updated_date: date,
+//     });
+//     return { Success: true, PageLabel: pageLabel };
+//   } catch (err) {
+//     console.log(err);
+//     return { Success: false, Error: err };
+//   }
+// };
+
+exports.createPageLabel = async (details,transaction) => {
   try {
     let date = new Date();
     let pageLabel = await models.page_map.create({
@@ -10,7 +26,7 @@ exports.createPageLabel = async (details) => {
       Label_id: details.label,
       Created_date: date,
       Updated_date: date,
-    });
+    },{transaction: transaction});
     return { Success: true, PageLabel: pageLabel };
   } catch (err) {
     console.log(err);
